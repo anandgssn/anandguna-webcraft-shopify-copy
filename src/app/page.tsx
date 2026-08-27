@@ -14,8 +14,6 @@ import IntroScene from "@/components/IntroScene";
 import DebugOverlay from "@/components/WebGLScene/DebugOverlay";
 import VideoModal from "@/components/VideoModal";
 
-const ALL_CARDS: Record<string, { name: string; video: string; image: string }> = {};
-
 export default function Home() {
   const [webglActive, setWebglActive] = useState(false);
   const [webglLocked, setWebglLocked] = useState(false);
@@ -23,7 +21,6 @@ export default function Home() {
 
   const openCard = useCallback((card: { name: string; video: string; image: string }) => {
     const slug = card.name.toLowerCase().replace(/\s+/g, "-");
-    ALL_CARDS[slug] = card;
     window.history.pushState(null, "", `#hero-${slug}`);
     setModalVideo({ src: card.video, poster: card.image, name: card.name });
   }, []);

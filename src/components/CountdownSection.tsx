@@ -300,7 +300,7 @@ export default function CountdownSection() {
             </div>
           </div>
 
-          <div className={styles.manifesto} ref={manifestoRef}>
+          <div id="philosophy" className={styles.manifesto} ref={manifestoRef}>
             <div className={styles.manifestoColumns}>
               <div className={styles.manifestoLeft}>
                 <h2 className={styles.manifestoHeadline} data-layout="text" data-id="manifesto-headline" data-depth="-300">

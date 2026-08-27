@@ -8,27 +8,21 @@ let fontLoadFailed = false;
 const textureLoader = new THREE.TextureLoader();
 const fontLoader = new FontLoader();
 
-async function loadFont(): Promise<Font> {
+async function loadFont(): Promise<Font | null> {
   if (cachedFont) return cachedFont;
-  if (fontLoadFailed) throw new Error("Font load previously failed");
+  if (fontLoadFailed) return null;
 
   try {
     cachedFont = await fontLoader.loadAsync(
       "/fonts/AntiqueLegacy-Medium.typeface.json"
     );
     return cachedFont;
-  } catch (e) {
+  } catch {
     fontLoadFailed = true;
-    console.error(
-      "[MaterialFactory] FATAL: AntiqueLegacy-Medium.typeface.json not found. Phase 2 cannot proceed."
+    console.warn(
+      "[MaterialFactory] 3D typeface unavailable; using canvas text fallback."
     );
-    const banner = document.createElement("div");
-    banner.style.cssText =
-      "position:fixed;top:0;left:0;right:0;padding:16px;background:red;color:white;font:bold 16px sans-serif;z-index:999999;text-align:center";
-    banner.textContent =
-      "Missing: public/fonts/AntiqueLegacy-Medium.typeface.json — convert via facetype.js or opentype.js";
-    document.body.appendChild(banner);
-    throw e;
+    return null;
   }
 }
 
@@ -483,7 +477,11 @@ export async function createObject3D(
   switch (item.layout) {
     case "text": {
       const font = await loadFont();
-      return createTextMesh(item, font);
+      if (font) return createTextMesh(item, font);
+
+      const text = item.element.dataset.text || item.element.textContent?.trim() || "";
+      if (!text) return new THREE.Group();
+      return createCanvasTextFallback(item, text, window.getComputedStyle(item.element));
     }
     case "shape":
       return createShapeMesh(item);

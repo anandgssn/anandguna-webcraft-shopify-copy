@@ -33,8 +33,6 @@
   color: var(--color-body);
 }
 
-.dividerWrap {}
-
 .divider {
   border: none;
   height: 1px;
@@ -57,10 +55,6 @@
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--color-black);
-}
-
-.ctaWrapper {
-  display: flex;
 }
 
 .ctaButton {
@@ -101,14 +95,6 @@
 
 .ctaLabel {
   white-space: nowrap;
-}
-
-.ctaDot {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
 }
 
 .ctaSublabel {
