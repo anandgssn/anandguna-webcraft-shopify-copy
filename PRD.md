@@ -24,10 +24,26 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 
 ### Core User Flows
 
-- **First sight:** Visitor arrives at `/` and sees a 4-word intro sequence (`Make` → `the` → `new` → `normal`) with popping scale and converging tracking, followed by a radial tile explosion that clears to reveal hero. Hero content rises into place as tiles dissolve. Total intro ~3.3 seconds. No blank frame between intro and hero.
-- **Browse projects:** Visitor scrolls to see hero headline `Make the new normal`, tagline `How we work is changing shape. So is what's possible.`, live indicator pulsing green dot `From Artifact`, and a grid of 19 video cards (3 columns desktop, 2 columns mobile) with mixed landscape/portrait ratios. Cards animate in from offset positions.
+- **First sight:**
+  - 4-word intro sequence (`Make` → `the` → `new` → `normal`) with popping scale and converging tracking
+  - Radial tile explosion that clears to reveal hero
+  - Hero content rises into place as tiles dissolve
+  - Total intro ~3.3 seconds. No blank frame between intro and hero.
+- **Browse projects:**
+  - Hero headline `Make the new normal`
+  - Tagline `How we work is changing shape. So is what's possible.`
+  - Live indicator pulsing green dot `From Artifact`
+  - Grid of 19 video cards (3 columns desktop, 2 columns mobile) with mixed landscape/portrait ratios
+  - Cards animate in from offset positions
 - **Watch a project:** Visitor clicks a card to open a fullscreen modal with the project video and native controls, white blurred backdrop, URL hash (e.g. `#hero-renaissance`), and locked background scroll. Backdrop click, `ESC`, or browser back closes the modal.
-- **Follow the clock:** Visitor scrolls through a 600vh sticky section where a 1600px `26` stays centered, an orange ring draws progressively with 221 tick marks, and the number counts `26` → `0` → `26`. Manifesto `Make commerce better for everyone` and body `Every 26 seconds, a merchant makes their first sale` appear with a wipe reveal.
+- **Follow the clock:**
+  - 600vh sticky section
+  - 1600px `26` stays centered
+  - Orange ring draws progressively with 221 tick marks
+  - Number counts `26` → `0` → `26`
+  - Manifesto `Make commerce better for everyone`
+  - Body `Every 26 seconds, a merchant makes their first sale`
+  - Wipe reveal
 - **Explore culture:** Visitor drags a horizontal row of 10 culture cards (5 media, 3 stacked, 2 article) centered in viewport, with momentum after release and auto-play when centered.
 - **See remote:** Visitor sees `Remote by design` staircase with 5 locations (Toronto, Ottawa, New York, Montreal, Seattle) at staggered horizontal offsets, studio photo in New York line.
 - **Finish:** Visitor reaches white footer `Help shape what comes next` with `Join Artifact` pill and hiring affordance.
@@ -268,7 +284,12 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 #### Countdown Clock Region
 
 - Content:
-  - Large `26` at `1600px`, orange ring with 221 tick marks, hand ticking once per second, manifesto `Make commerce better for everyone`, body `Every 26 seconds, a merchant makes their first sale`, CTA `Our design philosophy`.
+  - Large `26` at `1600px`
+  - Orange ring with 221 tick marks
+  - Hand ticking once per second
+  - Manifesto `Make commerce better for everyone`
+  - Body `Every 26 seconds, a merchant makes their first sale`
+  - CTA `Our design philosophy`
 - Structure, components, and assets:
   - Sticky section `600vh` height, number centered, ring and tick marks around circumference, hand from center, text below number.
   - Assets: clock dial `clock-hand-dial.webp`.
@@ -299,7 +320,12 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 
 - Content:
   - Headline `Remote by design` in red `#fe432a`.
-  - 5 locations: `Toronto — ONTARIO, CANADA`, `Ottawa — ONTARIO, CANADA`, `New York — NEW YORK, USA` (with studio photo `studio.jpg`), `Montreal — QUEBEC, CANADA`, `Seattle — WASHINGTON, USA`.
+  - 5 locations:
+    - `Toronto — ONTARIO, CANADA`
+    - `Ottawa — ONTARIO, CANADA`
+    - `New York — NEW YORK, USA` (with studio photo `studio.jpg`)
+    - `Montreal — QUEBEC, CANADA`
+    - `Seattle — WASHINGTON, USA`
 - Structure, components, and assets:
   - Staircase layout with each line at different horizontal offset, font `min(160px, 11.111vw)`, mono state labels `12px`.
   - Studio photo `studio.jpg` integrated into New York line, cover centered.
