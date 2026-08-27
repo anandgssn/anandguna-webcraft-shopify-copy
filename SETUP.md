@@ -75,7 +75,7 @@ See `.env.example` for reference (empty file).
 
 ## Narration / Walkthrough Videos
 
-- Temporary pending walkthrough: https://pxl.cl/pending
+- Narrated product walkthrough covering the Shopify Design experience across its primary sections and interactions: https://pxl.cl/cH8n4
 
 The final narrated walkthrough will cover:
 - Intro animation sequence
