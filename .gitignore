@@ -21,3 +21,4 @@ public/images/carousel-orig/
 shopify.mov
 .vercel
 .env*.local
+.webcraft-prd-runs/
