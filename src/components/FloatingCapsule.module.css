@@ -1,0 +1,25 @@
+.capsule {
+  border: none;
+  padding: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  position: fixed;
+  bottom: 25px;
+  right: 37px;
+  z-index: 200;
+  width: 56px;
+  height: 80px;
+  cursor: pointer !important;
+  overflow: visible;
+  /* CRITICAL: no transform here — JS handles all sizing via width/height */
+  transform: none;
+}
+
+.canvas3d {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}

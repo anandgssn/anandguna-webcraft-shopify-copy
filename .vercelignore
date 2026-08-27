@@ -1,0 +1,11 @@
+screenshots/
+reference/
+*.mov
+*.zip
+.claude/
+section_click.mov
+scripts/
+webgl-replacement-files/
+*.md
+!PRD.md
+!SETUP.md

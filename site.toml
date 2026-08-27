@@ -1,0 +1,53 @@
+[site]
+name = "anandguna-webcraft-shopify-copy"
+url = "https://shopify-design-3rp2a1ape-vinays-projects-481bc00d.vercel.app"
+original_url = "https://shopify.design"
+description = "Artifact Design — portfolio for a distributed design collective crafting tools for independent commerce"
+category = "replication"
+
+[site.tech]
+stack = ["Next.js", "Three.js", "TypeScript", "GSAP", "Lenis"]
+hosting = "vercel"
+hosting_access_granted = true
+
+[site.assets]
+images = [
+  "public/images/hero/renaissance.jpg",
+  "public/images/hero/racing.jpg",
+  "public/images/hero/tinker.jpg",
+  "public/images/hero/sidekick.jpg",
+  "public/images/hero/artifact.jpg",
+  "public/images/hero/openai.jpg",
+  "public/images/studio.jpg"
+]
+videos = [
+  "public/videos/hero/renaissance.mp4",
+  "public/videos/hero/racing.mp4",
+  "public/videos/hero/sidekick.mp4",
+  "public/videos/carousel/context.mp4",
+  "public/videos/carousel/diveclub.mp4"
+]
+models_3d = []
+svgs = [
+  "public/icons/logo.svg",
+  "public/icons/arrow-outward.svg",
+  "public/icons/arrow-forward-white.svg",
+  "public/icons/shop-bag.svg"
+]
+
+[site.prd]
+file = "PRD.md"
+setup = "npm install && npm run dev"
+backend = "Static Next.js site, no backend required"
+
+[[screenshots]]
+route = "/"
+file = "screenshots/replica-home-desktop.png"
+device = "desktop"
+side = "replica"
+
+[[screenshots]]
+route = "/"
+file = "screenshots/replica-home-mobile.png"
+device = "mobile"
+side = "replica"

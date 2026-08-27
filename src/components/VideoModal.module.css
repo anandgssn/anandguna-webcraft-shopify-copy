@@ -1,0 +1,121 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--color-white, #fff);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  animation: backdropIn 0.576s cubic-bezier(0.22, 1, 0.36, 1) 0.072s forwards;
+}
+
+@keyframes backdropIn {
+  to { opacity: 1; }
+}
+
+.card {
+  position: relative;
+  width: fit-content;
+  max-height: 85vh;
+  overflow: visible;
+  z-index: 1;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  filter: blur(3px);
+  transform: scale(1.05);
+  animation: cardIn 0.612s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+@keyframes cardIn {
+  to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+.videoWrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.video {
+  display: block;
+  max-width: min(1440px, calc(100vw - 16px));
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+}
+
+.explore {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.explorePill {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 9999px;
+  background: var(--color-white, #fff);
+  color: #000;
+  font-family: var(--font-headline);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.explorePill:hover {
+  transform: scale(1.03);
+}
+
+.arrowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-white, #fff);
+  color: #000;
+  text-decoration: none;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arrowBtn:hover {
+  transform: scale(1.06);
+}
+
+@media (max-width: 768px) {
+  .video {
+    max-width: calc(100vw - 16px);
+  }
+
+  .explore {
+    bottom: 16px;
+    left: 16px;
+  }
+}

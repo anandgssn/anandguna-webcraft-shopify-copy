@@ -1,0 +1,136 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--page-gutter) 164px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.brandName {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-body);
+}
+
+.brandDimmed {
+  opacity: 0.5;
+}
+
+.year {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-body);
+}
+
+.dividerWrap {}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding-top: 64px;
+}
+
+.headline {
+  font-family: var(--font-headline);
+  font-weight: 500;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+}
+
+.ctaWrapper {
+  display: flex;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  border-radius: 9999px;
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  text-decoration: none;
+  gap: 10px;
+  padding: 0 18px;
+  cursor: pointer;
+  font-family: var(--font-headline);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+  transition: transform 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ctaButton:hover {
+  transform: scale(1.015);
+  box-shadow: none;
+}
+
+.ctaButton:active {
+  transform: scale(0.97);
+}
+
+.ctaIcon {
+  flex-shrink: 0;
+  display: block;
+  color: var(--color-black);
+}
+
+.ctaLabel {
+  white-space: nowrap;
+}
+
+.ctaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.ctaSublabel {
+  font-size: 14px;
+  color: var(--color-grey-muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 var(--page-pad-mobile) 80px;
+  }
+  .content {
+    align-items: center;
+    text-align: center;
+    max-width: 360px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 210px;
+  }
+  .headline {
+    font-size: 32px;
+    text-align: center;
+  }
+}

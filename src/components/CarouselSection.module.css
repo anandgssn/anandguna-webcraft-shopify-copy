@@ -1,0 +1,382 @@
+/* ===================================================================
+   CarouselSection — CSS Module
+   =================================================================== */
+
+/* ----- Section ----- */
+.section {
+  --carousel-headline-top-safety: 0px;
+  overflow: visible;
+}
+
+/* ----- Headline ----- */
+.headlineWrap {
+  padding-top: calc(100px + var(--carousel-headline-top-safety));
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.headline {
+  font-family: var(--font-headline);
+  font-weight: 500;
+  font-size: var(--text-display);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--color-black);
+  text-align: center;
+  margin-left: -0.08em;
+}
+
+.tagline {
+  margin-top: 64px;
+  font-family: var(--font-headline);
+  font-weight: 400;
+  font-size: var(--text-callout);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+  text-align: center;
+  white-space: pre-line;
+  max-width: 340px;
+  text-wrap: pretty;
+}
+
+/* ----- Carousel Viewport (Embla) ----- */
+.carouselViewport {
+  --card-width: 415;
+  --card-height: 558;
+  --card-gap: 24;
+  --carousel-bleed: 220px;
+  --carousel-gutter: var(--page-gutter);
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-left: var(--carousel-gutter);
+  padding-right: var(--carousel-gutter);
+  width: 100%;
+  height: calc(var(--card-height) * 1px + var(--carousel-bleed) * 2);
+  padding-top: var(--carousel-bleed);
+  padding-bottom: var(--carousel-bleed);
+  margin-top: calc(96px - var(--carousel-bleed));
+  margin-bottom: calc(-1 * var(--carousel-bleed));
+  cursor: grab;
+}
+
+/* ----- Carousel Track ----- */
+.carousel {
+  display: flex;
+  gap: calc(var(--card-gap) * 1px);
+  will-change: transform;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ----- Card ----- */
+.card {
+  flex: 0 0 calc(var(--card-width) * 1px);
+  height: calc(var(--card-height) * 1px);
+  border-radius: var(--radius-card);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(var(--card-rotation, 0deg));
+  transition: transform 0.65s var(--ease-spring-bouncy),
+    box-shadow 0.65s var(--ease-spring-bouncy);
+  user-select: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  scroll-snap-align: center;
+  box-shadow: var(--shadow-card-hover-off);
+}
+
+.card:hover {
+  transform: rotate(var(--card-rotation, 0deg)) scale(1.015);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card:active {
+  transform: rotate(var(--card-rotation, 0deg)) scale(0.97);
+  box-shadow: var(--shadow-card-hover-off);
+}
+
+/* ----- Card Inner ----- */
+.cardInner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--card-width) * 0.068px);
+}
+
+/* ----- Footer ----- */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  font-family: var(--font-mono);
+  font-size: calc(var(--card-width) * 0.034px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+/* ----- Card Variant: Single Media ----- */
+.mediaFrame {
+  position: relative;
+  border-radius: calc(var(--card-width) * 0.058px);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bgText {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-headline);
+  font-size: calc(var(--card-width) * 0.335px);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  opacity: 0.22;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mediaPlaceholder {
+  width: calc(var(--card-width) * 0.58px);
+  height: calc(var(--card-height) * 0.47px);
+  border-radius: calc(var(--card-width) * 0.058px);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Play button overlay on media placeholder */
+.mediaPlaceholder::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mediaImage {
+  max-width: calc(var(--card-width) * 0.58px);
+  max-height: calc(var(--card-height) * 0.47px);
+  border-radius: calc(var(--card-width) * 0.058px);
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  display: block;
+  box-shadow: 0 24px 32px rgba(0, 0, 0, 0.12);
+  transform: rotate(2deg);
+}
+
+.playLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: calc(var(--card-width) * 0.039px);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: 16px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .playLabel {
+  opacity: 1;
+}
+
+.playTriangle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: currentColor;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.playTriangle::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 9px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 2px;
+}
+
+/* ----- Card Variant: Stacked Images ----- */
+.stackedContainer {
+  position: relative;
+  width: calc(var(--card-width) * 0.675px);
+  height: calc(var(--card-width) * 0.675px);
+}
+
+.stackedImage {
+  position: absolute;
+  width: calc(var(--card-width) * 0.52px);
+  height: calc(var(--card-width) * 0.52px);
+  border-radius: calc(var(--card-width) * 0.058px);
+  box-shadow: 0 24px 32px rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+  transition: transform 0.65s var(--ease-spring-bouncy);
+}
+
+.stackedImage:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform: rotate(-6deg);
+  z-index: 1;
+}
+
+.stackedImage:nth-child(2) {
+  top: 20px;
+  left: 40px;
+  transform: rotate(2deg);
+  z-index: 2;
+}
+
+.stackedImage:nth-child(3) {
+  top: 40px;
+  left: 70px;
+  transform: rotate(6deg);
+  z-index: 3;
+}
+
+/* ----- Card Variant: Article ----- */
+.articleBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.articleBgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.articleBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.25) 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+.articleHeading {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-headline);
+  font-size: calc(var(--card-width) * 0.135px);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: inherit;
+  padding: 0;
+  max-width: 300px;
+  text-align: left;
+  align-self: flex-start;
+  margin: 0;
+  flex: 1;
+}
+
+/* Simulated article body text lines */
+.articleHeading::after {
+  content: "";
+  display: block;
+  margin-top: 16px;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  box-shadow:
+    0 12px 0 0 rgba(255, 255, 255, 0.15),
+    0 24px 0 0 rgba(255, 255, 255, 0.1),
+    0 36px 0 0 rgba(255, 255, 255, 0.07);
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .section {
+    margin-top: 0;
+  }
+
+  .carouselViewport {
+    --card-width: 320;
+    --card-gap: 16;
+    --carousel-bleed: 120px;
+    --carousel-gutter: var(--page-pad-mobile);
+    height: calc(min(360px, 100vw - var(--carousel-gutter) * 2) / 3 * 4 + var(--carousel-bleed) * 2);
+    margin-top: calc(48px - var(--carousel-bleed));
+    margin-bottom: calc(-1 * var(--carousel-bleed));
+  }
+
+  .card {
+    flex: 0 0 min(360px, calc(100vw - var(--carousel-gutter) * 2));
+    min-width: 0;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .cardFooter {
+    font-size: var(--text-meta);
+  }
+
+  .tagline {
+    margin-top: 24px;
+    padding-left: var(--page-pad-mobile, 16px);
+    padding-right: var(--page-pad-mobile, 16px);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .cardInner img,
+  .cardInner::before,
+  .mediaPlaceholder img,
+  .mediaImage,
+  .stackedImage {
+    animation: none !important;
+  }
+}

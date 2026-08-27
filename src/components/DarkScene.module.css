@@ -1,0 +1,79 @@
+/* ===================================================================
+   DarkScene — Immersive 3D dark environment
+   =================================================================== */
+
+.scene {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+/* ----- White-to-black gradient at the top ----- */
+.gradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, #fff 0%, #000 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ----- Perspective wireframe grid ----- */
+.gridFloor {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  width: 140%;
+  height: 60%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform-origin: center bottom;
+  perspective: 800px;
+  transform: rotateX(60deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ----- Floating particles ----- */
+.particlesContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  animation: particleFloat ease-in-out infinite;
+  opacity: 0;
+}
+
+/* Fade in once the scene is visible */
+.visible .particle {
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ----- Content layer (Footer sits here) ----- */
+.contentLayer {
+  position: relative;
+  z-index: 3;
+}

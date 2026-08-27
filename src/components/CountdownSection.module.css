@@ -1,0 +1,280 @@
+/* ===================================================================
+   CountdownSection — Shopify.design DOM clock model
+   =================================================================== */
+
+.section {
+  --ring-size: max(1400px, min(1800px, 98vw));
+  --clock-accent: #ff591d;
+  --clock-tick: #e5e5e5;
+  position: relative;
+  pointer-events: none;
+  margin-top: max(-140vh, -1300px);
+  padding-bottom: calc(var(--ring-size) * 0.35);
+}
+
+.stage {
+  position: relative;
+  height: 600vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: visible;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.clockWrap,
+.handWrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--ring-size);
+  height: var(--ring-size);
+  transform: translate(-50%, 100dvh);
+  transform-origin: 50% 50%;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.clockWrap {
+  z-index: 10;
+}
+
+.handWrap {
+  z-index: 12;
+}
+
+.clock {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.clockRing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.digits {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.05);
+  width: calc(var(--ring-size) * 0.726);
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.digitsFilled {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.digitSlot {
+  flex: 1;
+  position: relative;
+  aspect-ratio: 66 / 88;
+}
+
+.digitSlot svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.handLayer {
+  position: absolute;
+  top: calc(var(--ring-size) / 2);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--ring-size) / 1.6);
+  aspect-ratio: 1;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.handDial {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  will-change: transform;
+}
+
+.manifesto {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%) translateY(var(--manifesto-y, 78vh));
+  visibility: var(--manifesto-vis, hidden);
+  width: 100vw;
+  margin: 0;
+  padding: 24px 0 0;
+  pointer-events: none;
+  z-index: 11;
+  isolation: isolate;
+}
+
+.manifestoColumns {
+  position: relative;
+  display: grid;
+  max-width: var(--grid-max);
+  margin: 0 auto;
+  grid-template-columns: repeat(10, 1fr);
+  padding: 140px 40px;
+}
+
+.manifestoColumns::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 50%;
+  transform: translate(-50%);
+  width: 100vw;
+  background: linear-gradient(to bottom, transparent 0%, var(--color-white) 35%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.manifestoLeft {
+  grid-column: 3 / span 3;
+  padding-right: 80px;
+}
+
+.manifestoRight {
+  grid-column: 6 / span 3;
+  padding-right: 32px;
+}
+
+.manifestoHeadline {
+  font-family: var(--font-headline);
+  font-weight: 500;
+  font-size: var(--text-heading);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+  text-wrap: pretty;
+}
+
+.manifestoBody {
+  font-family: var(--font-regular);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+  max-width: 480px;
+  margin-bottom: 26px;
+  text-wrap: pretty;
+}
+
+.ctaGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.ctaLabel,
+.ctaArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: 9999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.8s var(--ease-out-quint);
+}
+
+.ctaLabel {
+  gap: 10px;
+  padding: 0 24px 0 20px;
+  font-family: var(--font-headline);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  white-space: nowrap;
+}
+
+.ctaArrow {
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.ctaGroup:hover .ctaLabel,
+.ctaGroup:hover .ctaArrow {
+  transform: scale(1.015);
+}
+
+.ctaIcon {
+  width: 18px;
+  height: auto;
+  transform: translateY(-0.5px);
+  flex-shrink: 0;
+}
+
+@media (max-width: 1280px) and (min-width: 1025px) {
+  .manifestoLeft {
+    grid-column: 2 / span 3;
+    padding-right: 0;
+  }
+
+  .manifestoRight {
+    grid-column: 6 / span 4;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    --ring-size: min(1800px, 122vw);
+  }
+
+  .manifestoColumns::before {
+    display: block;
+    top: -120px;
+  }
+
+  .manifestoColumns {
+    grid-template-columns: 1fr;
+    padding: 0 var(--page-pad-mobile);
+    height: auto;
+    text-align: center;
+    justify-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .manifestoLeft {
+    grid-column: 1;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .manifestoRight {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .manifestoBody {
+    max-width: 100%;
+  }
+}
