@@ -21,7 +21,16 @@ export default function Footer() {
           comes next
         </h2>
 
-        <a href="#" className={styles.ctaButton} data-layout="shape" data-id="footer-btn" data-depth="-300" data-shape-type="pill">
+        <a
+          href="https://www.shopify.com/careers"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.ctaButton}
+          data-layout="shape"
+          data-id="footer-btn"
+          data-depth="-300"
+          data-shape-type="pill"
+        >
           <span className={styles.ctaLabel}>Join Shopify</span>
           <img src="/icons/shop-bag.svg" alt="" width="20" height="20" className={styles.ctaIcon} />
           <span className={styles.ctaSublabel}>Open Roles</span>

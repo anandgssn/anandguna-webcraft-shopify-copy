@@ -1,0 +1,35 @@
+{
+  "site": "anandguna-webcraft-shopify-copy",
+  "rubrics": [
+    {
+      "id": 1,
+      "criterion": "The opening sequence reveals the Shopify Design identity, animated headline, live status bar, and three-column project grid without layout shifts.",
+      "type": "design",
+      "priority": "must-have"
+    },
+    {
+      "id": 2,
+      "criterion": "Selecting a project card opens its looping media in a focused modal that closes by backdrop click, Escape, or browser history navigation.",
+      "type": "CUJ",
+      "priority": "must-have"
+    },
+    {
+      "id": 3,
+      "criterion": "Scrolling through the countdown section drives the oversized clock, radial tick drawing, hand motion, digit countdown, and manifesto transition.",
+      "type": "CUJ",
+      "priority": "must-have"
+    },
+    {
+      "id": 4,
+      "criterion": "The editorial carousel supports drag navigation across media, stacked-photo, and article cards while preserving each card's distinct layout and color treatment.",
+      "type": "CUJ",
+      "priority": "must-have"
+    },
+    {
+      "id": 5,
+      "criterion": "The responsive experience retains the remote-studio typography, footer composition, floating 3D capsule, and interactive WebGL scene across desktop and mobile viewports.",
+      "type": "design",
+      "priority": "must-have"
+    }
+  ]
+}

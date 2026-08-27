@@ -24,10 +24,12 @@ export class CameraController {
   private scrollZTarget = 0;
   private scrollZ = 0;
   private scrollZVel = 0;
+  private wheelZTarget = 0;
 
   setInitialScrollZ(z: number) {
     this.scrollZ = z;
     this.scrollZTarget = z;
+    this.wheelZTarget = z;
   }
   private scale = 1;
   private lookScale = 1;
@@ -39,7 +41,7 @@ export class CameraController {
   }
 
   onWheel(deltaY: number) {
-    // No longer accumulating deltaY. Scroll is handled by window.scrollY in update()
+    this.wheelZTarget = Math.max(-500, Math.min(MAX_SCROLL_Z, this.wheelZTarget + deltaY));
   }
 
   update(camera: THREE.PerspectiveCamera, spreadT: number) {
@@ -69,7 +71,7 @@ export class CameraController {
     // Map scroll position to camera Z
     const Fr = (2 * 800 * Math.tan((50 * Math.PI / 180) / 2)) / 900;
     const scrollY = window.scrollY || 0;
-    this.scrollZTarget = scrollY * Fr;
+    this.scrollZTarget = Math.max(-500, Math.min(MAX_SCROLL_Z, scrollY * Fr + this.wheelZTarget));
 
     this.scrollZVel += (SCROLL_STIFFNESS * (this.scrollZTarget - this.scrollZ) - SCROLL_DAMPING * this.scrollZVel) * DT;
     this.scrollZ += this.scrollZVel * DT;
@@ -89,5 +91,9 @@ export class CameraController {
 
   getScrollZ(): number {
     return this.scrollZ;
+  }
+
+  getWheelTarget(): number {
+    return this.wheelZTarget;
   }
 }

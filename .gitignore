@@ -5,7 +5,6 @@ node_modules/
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
-screenshots/
 *.zip
 .claude/
 reference/3d-frames/
@@ -22,3 +21,4 @@ shopify.mov
 .vercel
 .env*.local
 .webcraft-prd-runs/
+test-results/

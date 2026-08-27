@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import CountdownSection from "@/components/CountdownSection";
@@ -18,8 +18,8 @@ const ALL_CARDS: Record<string, { name: string; video: string; image: string }> 
 
 export default function Home() {
   const [webglActive, setWebglActive] = useState(false);
+  const [webglLocked, setWebglLocked] = useState(false);
   const [modalVideo, setModalVideo] = useState<{ src: string; poster: string; name: string } | null>(null);
-  const enteredViaCapsule = useRef(false);
 
   const openCard = useCallback((card: { name: string; video: string; image: string }) => {
     const slug = card.name.toLowerCase().replace(/\s+/g, "-");
@@ -46,35 +46,35 @@ export default function Home() {
   }, []);
 
   const handleHeadlineDown = useCallback(() => {
-    enteredViaCapsule.current = false;
+    setWebglLocked(true);
     setWebglActive(true);
   }, []);
 
   const handleMainDown = useCallback((e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
-    if (target.closest("button") || target.closest("a") || target.closest("video")) return;
-    enteredViaCapsule.current = false;
+    if (target.closest("button") || target.closest("a") || target.closest("video") || target.closest("h1")) return;
+    setWebglLocked(false);
     setWebglActive(true);
   }, []);
 
   const handleMouseUpClose = useCallback(() => {
-    if (!enteredViaCapsule.current) {
+    if (!webglLocked) {
       setWebglActive(false);
     }
-  }, []);
+  }, [webglLocked]);
 
   const handleEscClose = useCallback(() => {
-    enteredViaCapsule.current = false;
+    setWebglLocked(false);
     setWebglActive(false);
   }, []);
 
   const handleCapsuleClick = useCallback(() => {
     setWebglActive((prev) => {
       if (prev) {
-        enteredViaCapsule.current = false;
+        setWebglLocked(false);
         return false;
       } else {
-        enteredViaCapsule.current = true;
+        setWebglLocked(true);
         return true;
       }
     });
@@ -89,6 +89,7 @@ export default function Home() {
       <main onMouseDown={handleMainDown} onMouseUp={handleMouseUpClose} style={{ cursor: "grab" }}>
         <Header />
         <HeroSection
+          onHeadlineClick={handleHeadlineDown}
           onCardClick={handleCardClick}
         />
         <CountdownSection />
@@ -107,7 +108,7 @@ export default function Home() {
         isActive={webglActive}
         onClose={handleMouseUpClose}
         onEscClose={handleEscClose}
-        locked={enteredViaCapsule.current}
+        locked={webglLocked}
       />
       <DebugOverlay />
       <IntroScene />

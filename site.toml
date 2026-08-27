@@ -1,8 +1,8 @@
 [site]
 name = "anandguna-webcraft-shopify-copy"
-url = "https://shopify-design-3rp2a1ape-vinays-projects-481bc00d.vercel.app"
+url = "https://anandguna-webcraft-shopify-copy.vercel.app"
 original_url = "https://shopify.design"
-description = "Artifact Design — portfolio for a distributed design collective crafting tools for independent commerce"
+description = "Shopify Design — an interactive portfolio of the people, ideas, and product work shaping commerce"
 category = "replication"
 
 [site.tech]
@@ -27,7 +27,23 @@ videos = [
   "public/videos/carousel/context.mp4",
   "public/videos/carousel/diveclub.mp4"
 ]
-models_3d = []
+models_3d = [
+  "public/models/model4.glb",
+  "public/models/model5.glb",
+  "public/models/model7.glb",
+  "public/models/model8.glb",
+  "public/models/model10.glb",
+  "public/models/model11.glb",
+  "public/models/model12.glb",
+  "public/models/model13.glb",
+  "public/models/model14.glb",
+  "public/models/model15.glb",
+  "public/models/model16.glb",
+  "public/models/model17.glb",
+  "public/models/model18.glb",
+  "public/models/model19.glb",
+  "public/models/model20.glb"
+]
 svgs = [
   "public/icons/logo.svg",
   "public/icons/arrow-outward.svg",

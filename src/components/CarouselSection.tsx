@@ -368,7 +368,7 @@ export default function CarouselSection({ onCardClick }: { onCardClick?: (card: 
   /* ---- Render ---- */
 
   return (
-    <section className={styles.section} ref={sectionRef}>
+    <section id="stories" className={styles.section} ref={sectionRef}>
       {/* Headline */}
       <div className={styles.headlineWrap}>
         <h2 className={styles.headline}>

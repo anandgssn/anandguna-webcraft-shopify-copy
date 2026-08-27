@@ -129,12 +129,10 @@ function HeroCard({ card, index, colIdx, cardIdx, onCardClick }: { card: Project
 }
 
 export default function HeroSection({
-  onHeadlineDown,
-  onHeadlineUp,
+  onHeadlineClick,
   onCardClick,
 }: {
-  onHeadlineDown?: () => void;
-  onHeadlineUp?: () => void;
+  onHeadlineClick?: () => void;
   onCardClick?: (card: { name: string; video: string; image: string }) => void;
 }) {
   return (
@@ -142,7 +140,7 @@ export default function HeroSection({
       <div className={styles.headlineWrapper}>
         <h1
           className={styles.headline}
-          onMouseDown={onHeadlineDown}
+          onClick={onHeadlineClick}
           style={{ cursor: "grab" }}
         >
           <span className={styles.headlineLine} data-layout="text" data-id="hero-line-1" data-depth="-200">

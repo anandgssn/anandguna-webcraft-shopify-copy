@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./Header.module.css";
 
 export default function Header() {
   return (
     <header className={styles.header}>
-      <a href="/" className={styles.logo} aria-label="Shopify Design">
+      <Link href="/" className={styles.logo} aria-label="Shopify Design">
         <img
           src="/icons/logo.svg"
           alt="Shopify Design"
@@ -16,10 +17,10 @@ export default function Header() {
           data-id="header-logo"
           data-depth="-300"
         />
-      </a>
+      </Link>
 
       <div className={styles.ctaGroup}>
-        <a href="#" className={styles.marqueePill} aria-label="Demo Night Vol. 2">
+        <a href="#stories" className={styles.marqueePill} aria-label="Jump to Demo Night stories">
           <div className={styles.marqueeWindow}>
             <div className={styles.marqueeTrack}>
               <span className={styles.marqueeText}>
@@ -42,7 +43,7 @@ export default function Header() {
           <span className={styles.dateLabel}>Apr 22</span>
         </a>
 
-        <a href="#" className={styles.arrowCircle} aria-label="Open event" data-layout="shape" data-id="header-cta" data-depth="100">
+        <a href="#stories" className={styles.arrowCircle} aria-label="Jump to stories" data-layout="shape" data-id="header-cta" data-depth="100">
           <img src="/icons/arrow-outward.svg" alt="" width="20" height="20" />
         </a>
       </div>

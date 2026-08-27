@@ -38,6 +38,13 @@ export default function VideoModal({ src, poster, name, onClose }: VideoModalPro
     [onClose]
   );
 
+  const replayVideo = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = 0;
+    void video.play();
+  }, []);
+
   return (
     <div ref={overlayRef} className={styles.overlay} onClick={handleBackdropClick}>
       <div className={styles.card}>
@@ -53,14 +60,14 @@ export default function VideoModal({ src, poster, name, onClose }: VideoModalPro
             loop
           />
           <div className={styles.explore}>
-            <a className={styles.explorePill} href="#" onClick={(e) => e.preventDefault()}>
+            <button className={styles.explorePill} type="button" onClick={replayVideo}>
               Explore
-            </a>
-            <a className={styles.arrowBtn} href="#" onClick={(e) => e.preventDefault()} aria-label="Open">
+            </button>
+            <button className={styles.arrowBtn} type="button" onClick={replayVideo} aria-label="Replay project video">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 10L10 4M10 4H5M10 4V9" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>

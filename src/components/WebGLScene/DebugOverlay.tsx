@@ -1,33 +1,33 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { measureLayout, computeFr, type LayoutItem } from "./LayoutEngine";
 
 export default function DebugOverlay() {
   const [items, setItems] = useState<LayoutItem[]>([]);
   const [fr, setFr] = useState(0);
   const [enabled, setEnabled] = useState(false);
-  const rafRef = useRef(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
-    setEnabled(params.has("debugLayout"));
+    const frame = requestAnimationFrame(() => setEnabled(params.has("debugLayout")));
+    return () => cancelAnimationFrame(frame);
   }, []);
-
-  const update = useCallback(() => {
-    if (!enabled) return;
-    const measured = measureLayout();
-    setItems(measured);
-    setFr(computeFr(window.innerHeight));
-    rafRef.current = requestAnimationFrame(update);
-  }, [enabled]);
 
   useEffect(() => {
     if (!enabled) return;
-    rafRef.current = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [enabled, update]);
+
+    let frame = 0;
+    const update = () => {
+      setItems(measureLayout());
+      setFr(computeFr(window.innerHeight));
+      frame = requestAnimationFrame(update);
+    };
+
+    frame = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(frame);
+  }, [enabled]);
 
   if (!enabled) return null;
 

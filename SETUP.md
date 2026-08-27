@@ -41,7 +41,11 @@ npx vercel --prod
 
 Or connect the GitHub repo to Vercel for automatic deployments on push.
 
-**Note**: Since this repo is in the codimango org, you may need to use the Vercel CLI instead of GitHub import.
+The production deployment is available at
+`https://anandguna-webcraft-shopify-copy.vercel.app`. The project is owned by
+the **AAI -Web Craft** Vercel team and connected to the internal Codimango
+GitHub repository. Its published `internal meta` firewall rule denies requests
+outside Meta CIDRs `199.201.64.0/22` and `163.114.128.0/20`.
 
 ## Environment Variables
 
@@ -49,7 +53,7 @@ No environment variables required. This is a static frontend site with no backen
 
 See `.env.example` for reference (empty file).
 
-## External Assets
+## Assets and External Links
 
 ### Fonts
 - **DM Serif Display**: Google Fonts (self-hosted in `/public/fonts/`)
@@ -60,25 +64,20 @@ See `.env.example` for reference (empty file).
 - Shopify bag logo and UI icons: Original SVGs from shopify.design (functional elements, kept as-is)
 - All icons in `/public/icons/`
 
-### Images & Videos
+### Images and Videos
 
-**AI-Generated Assets (Phase 2):**
-- 19 hero project videos: Generated using Meta's AI video tools to replicate the style of original Shopify Design project previews
-- 19 hero poster images: Auto-extracted from generated videos using ffmpeg
-- 5 carousel videos: AI-generated interview/talk style videos
-- 3 carousel stacked images: AI-generated event photography
-- 1 studio image: AI-generated workspace photo
+- Local fallback images, videos, audio, fonts, icons, and WebGL models live under
+  `public/` and are inventoried in `site.toml`.
+- Project and editorial media currently use Shopify's public media CDN so the
+  animated portfolio cards retain their intended content and timing.
+- The footer's **Join Shopify** command opens the meaningful third-party Shopify
+  careers page in a new tab. No runtime link points back to the reference site.
 
-**Original Assets (Reference only during development):**
-- During Phase 1, original assets from shopify.design were used to nail layout and timing
-- All creative content (videos, photos) replaced with AI-generated versions before submission
-- Fonts and icons kept as functional UI elements per hackathon guidance
+## Narration / Walkthrough Videos
 
-## Comparison Video
+- Temporary pending walkthrough: https://pxl.cl/pending
 
-**Pixelcloud URL**: [To be uploaded]
-
-The comparison video shows the replica site alongside the original reference site, covering:
+The final narrated walkthrough will cover:
 - Intro animation sequence
 - Hero section with project grid
 - Countdown section with sticky behavior and ring animation
@@ -86,24 +85,6 @@ The comparison video shows the replica site alongside the original reference sit
 - Remote section scroll reveals
 - 3D WebGL mode entry and camera controls
 - Responsive behavior on mobile
-
-## Replication Process
-
-### Phase 1: Exact Replication
-1. Downloaded all assets from shopify.design (videos, images, fonts, icons)
-2. Reverse-engineered CSS measurements using browser DevTools
-3. Extracted animation timing from original JavaScript bundle
-4. Rebuilt each section to match pixel-perfect layout
-5. Implemented scroll-driven animations using IntersectionObserver
-6. Created 3D WebGL mode using Three.js based on original implementation
-
-### Phase 2: Asset Transformation
-1. Generated 19 hero videos using AI video tools (replicated style, not content)
-2. Generated 5 carousel videos with interview/talk format
-3. Created 3 stacked event photos using AI image generation
-4. Auto-generated poster images from videos
-5. Replaced all creative assets while maintaining exact layout/timing
-6. Kept fonts and icons as functional elements
 
 ### Key Technical Decisions
 - Used original CSS custom properties (--hero-fs, --page-gutter, etc.) for exact measurements

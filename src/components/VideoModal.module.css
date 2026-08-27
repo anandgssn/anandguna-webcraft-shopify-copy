@@ -71,6 +71,8 @@
 }
 
 .explorePill {
+  border: 0;
+  cursor: pointer;
   display: flex;
   align-items: center;
   height: 44px;
@@ -92,6 +94,8 @@
 }
 
 .arrowBtn {
+  border: 0;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;

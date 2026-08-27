@@ -21,8 +21,6 @@ export default function WebGLScene({ isActive, onClose, onEscClose, locked }: We
   const containerRef = useRef<HTMLDivElement>(null);
   const managerRef = useRef<SceneManager | null>(null);
   const audioRef = useRef<AmbientEngine | null>(null);
-  const lockedRef = useRef(locked);
-  lockedRef.current = locked;
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -32,10 +30,10 @@ export default function WebGLScene({ isActive, onClose, onEscClose, locked }: We
   );
 
   const handleMouseUp = useCallback(() => {
-    if (!lockedRef.current) {
+    if (!locked) {
       onClose();
     }
-  }, [onClose]);
+  }, [locked, onClose]);
 
   // Initialize scene ONCE on mount, regardless of isActive
   useEffect(() => {
@@ -88,7 +86,10 @@ export default function WebGLScene({ isActive, onClose, onEscClose, locked }: We
       className={styles.overlay}
       ref={containerRef}
       data-testid="webgl-overlay"
-      style={{ pointerEvents: isActive ? "auto" : "none" }}
+      style={{
+        pointerEvents: isActive ? "auto" : "none",
+        visibility: isActive ? "visible" : "hidden",
+      }}
     />
   );
 }

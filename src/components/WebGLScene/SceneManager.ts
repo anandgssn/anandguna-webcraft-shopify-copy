@@ -275,8 +275,9 @@ export class SceneManager {
   private onWheel(e: WheelEvent) {
     if (this.spreadT > 0.1) {
       e.preventDefault();
+      this.cameraController.onWheel(e.deltaY);
+      this.container.dataset.cameraScrollTarget = String(this.cameraController.getWheelTarget());
     }
-    // CameraController now handles scroll internally via window.scrollY
   }
 
   private animate = () => {

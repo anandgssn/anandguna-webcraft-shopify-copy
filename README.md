@@ -1,28 +1,39 @@
-# anandguna-webcraft-shopify-copy
+# Shopify Design Web Craft
 
-This is a copy of [codimango/vinaypadmanabhi-webcraft-shopify](https://github.com/codimango/vinaypadmanabhi-webcraft-shopify) — the original author has left the Web Craft track. This copy is maintained by **anandguna** for PRD and walkthrough fixes per task [T285799928](https://www.internalfb.com/tasks/?t=285799928).
+An interactive portfolio for a distributed product-design collective. The
+single-page experience combines an animated project gallery, a scroll-driven
+countdown, draggable editorial stories, remote-studio typography, video
+previews, and an optional spatial WebGL view.
 
-The original site is live at https://shopify-design-3rp2a1ape-vinays-projects-481bc00d.vercel.app and the original repo is https://github.com/codimango/vinaypadmanabhi-webcraft-shopify.
+## Development
 
-## Original Web Craft Template
+```bash
+npm install
+npm run dev
+```
 
-Starter repo for the Web Craft hackathon track. Use this template to create your submission.
+Open `http://localhost:3000`. Production builds and checks run with:
 
-### Quick Start
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-1. Click "Use this template" → "Create a new repository"
-2. Set owner to `codimango`, name it `{your-username}-webcraft`, set to Private
-3. Clone your new repo and start building
-4. Copy `site.toml.example` to `site.toml` and fill in your details
+The focused WebGL interaction suite expects the app at port `3456`:
 
-### Required Files
+```bash
+npm run dev -- --hostname 127.0.0.1 --port 3456
+npx playwright test tests/webgl-scene.spec.ts
+```
 
-- `site.toml` — Submission manifest ([schema reference](https://www.multimango.com/admin/aai-hackathons/web-craft))
-- `PRD.md` — 1–4 page product requirements doc
-- `SETUP.md` — Setup & deployment instructions so reviewers can run your site locally
-- `.env.example` — Environment variable placeholders (never commit real secrets)
-- `screenshots/` — Desktop (1440×900) or mobile (390×844) screenshots per route
+## Deployment
 
-### Full Guide
+- Production: `https://anandguna-webcraft-shopify-copy.vercel.app`
+- Owner: **AAI -Web Craft**
+- Source: `codimango/anandguna-webcraft-shopify-copy`
+- Access: published `internal meta` firewall rule allowing only
+  `199.201.64.0/22` and `163.114.128.0/20`
 
-See the [Web Craft track guide](https://www.multimango.com/admin/aai-hackathons/web-craft) for complete instructions, field reference, and submission checklist.
+See [SETUP.md](SETUP.md) for the full local setup, deployment notes, asset
+inventory, testing scope, and walkthrough status.
