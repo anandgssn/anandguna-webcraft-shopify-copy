@@ -4,7 +4,7 @@
 
 Artifact Design is the portfolio and culture site for Artifact, a distributed design collective crafting tools for independent commerce. The site presents Artifact’s philosophy, people, and work to attract design talent, demonstrate craft, and share the collective’s design culture with the community.
 
-The experience is a single-page editorial and cinematic scroll. It opens with a dramatic intro sequence that reveals the brand statement `Make the new normal`, followed by a hero with oversized serif headline and a grid of 19 featured project videos. Scrolling reveals a sticky countdown clock, a draggable carousel of culture cards, a remote-office staircase, and a hiring footer. An optional fullscreen black wireframe 3D mode lets visitors explore the portfolio in depth. The entire product is a single route `/` with no subpages; the modal for a project uses a hash overlay on the same route.
+The experience is a single-page editorial and cinematic scroll. It opens with a dramatic intro sequence that reveals the brand statement `Make the new normal`, followed by a hero with oversized serif headline and a grid of 23 featured project videos. Scrolling reveals a sticky countdown clock, a draggable carousel of culture cards, a remote-office staircase, and a hiring footer. An optional fullscreen black wireframe 3D mode lets visitors explore the portfolio in depth. The entire product is a single route `/` with no subpages; the modal for a project uses a hash overlay on the same route.
 
 The product qualities are confident, editorial, cinematic, and crafted. Typography is large and expressive, color is high-contrast with saturated accents, motion is smooth and purposeful, and the layout balances generous whitespace with dense information.
 
@@ -33,7 +33,7 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
   - Hero headline `Make the new normal`
   - Tagline `How we work is changing shape. So is what's possible.`
   - Live indicator pulsing green dot `From Artifact`
-  - Grid of 19 video cards (3 columns desktop, 2 columns mobile) with mixed landscape/portrait ratios
+  - Grid of 23 video cards (3 columns desktop, 2 columns mobile) with mixed landscape/portrait ratios
   - Cards animate in from offset positions
 - **Watch a project:** Visitor clicks a card to open a fullscreen modal with the project video and native controls, white blurred backdrop, URL hash (e.g. `#hero-renaissance`), and locked background scroll. Backdrop click, `ESC`, or browser back closes the modal.
 - **Follow the clock:**
@@ -44,7 +44,7 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
   - Manifesto `Make commerce better for everyone`
   - Body `Every 26 seconds, a merchant makes their first sale`
   - Wipe reveal
-- **Explore culture:** Visitor drags a horizontal row of 10 culture cards (5 media, 3 stacked, 2 article) centered in viewport, with momentum after release and auto-play when centered.
+- **Explore culture:** Visitor drags a horizontal row of 14 culture cards (8 media, 4 stacked, 2 article) centered in viewport, with momentum after release and auto-play when centered.
 - **See remote:** Visitor sees `Remote by design` staircase with 5 locations (Toronto, Ottawa, New York, Montreal, Seattle) at staggered horizontal offsets, studio photo in New York line.
 - **Finish:** Visitor reaches white footer `Help shape what comes next` with `Join Artifact` pill and hiring affordance.
 
@@ -124,8 +124,8 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 
 ### Media Treatment
 
-- **Hero videos:** 19 project previews autoplay muted loop, mixed aspect ratios, cover centered.
-- **Carousel videos:** 5 media cards with auto-play when centered, large background text.
+- **Hero videos:** 23 project previews autoplay muted loop, mixed aspect ratios, cover centered.
+- **Carousel videos:** 8 media cards with auto-play when centered, large background text (of 14 total).
 - **Remote studio photo:** Integrated into New York line, cover centered.
 - **3D mode:** Wireframe grid lattice, headlines as 3D wireframe text, project planes at varying depths, fog for depth, floating particles and cubes.
 - **Grain and polish:** Subtle grain and high-contrast finish consistent across sections.
@@ -165,7 +165,7 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 | `Demo Night` | External event link | header pill |
 | `Join Artifact` | Hiring destination | footer CTA |
 
-### Project Grid Catalog (19 items)
+### Project Grid Catalog (23 items)
 
 | Title | Aspect | Type |
 |-------|--------|------|
@@ -175,17 +175,17 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 | `Sidekick` | Portrait | Featured |
 | `Artifact` | Landscape | Featured |
 | `OpenAI` | Portrait | Featured |
-| Additional 13 project videos | Mixed | Grid cards |
+| Additional 17 project videos | Mixed | Grid cards |
 
 - Each card shows video preview, title, and category; clicking opens modal with full video and hash route.
-- Only the 6 listed titles are verified verbatim; remaining 13 are present as grid cards with video previews.
+- Only the 6 listed titles are verified verbatim; remaining 17 are present as grid cards with video previews (total 23 = 8 + 7 + 8 across 3 columns, see `src/components/HeroSection.tsx` COL1/COL2/COL3).
 
-### Carousel Catalog (10 cards)
+### Carousel Catalog (14 cards)
 
 | Variant | Count | Description |
 |---------|-------|-------------|
-| Media | 5 | Video thumbnail with play button and large background text |
-| Stacked | 3 | Three overlapping event photos |
+| Media | 8 | Video thumbnail with play button and large background text |
+| Stacked | 4 | Three overlapping event photos |
 | Article | 2 | Gradient background with bold heading text |
 
 - Card size `415 × 558px`, radius `24px`, rotation `-2deg` to `+2.5deg`.
@@ -203,16 +203,18 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 
 ### Asset Inventory
 
-| Category | Asset Path | Usage |
-|----------|------------|-------|
-| Hero videos | `/public/videos/hero/renaissance.mp4`, `racing.mp4`, `tinker.mp4`, `sidekick.mp4`, `artifact.mp4`, `openai.mp4` and 13 additional project videos | Project grid previews and modal videos |
-| Carousel videos | `/public/videos/carousel/context.mp4`, `diveclub.mp4` and 3 additional | Carousel media cards |
-| Clock dial | `/public/clock/clock-hand-dial.webp` | Countdown clock hand |
-| Fonts | `/public/fonts/DMSerifDisplay-Regular.woff2`, `SpaceGrotesk-Medium.woff2`, `FragmentMono-Regular.woff2` | Typography |
-| Favicons | `/public/favicons/favicon-32x32.png`, `favicon-16x16.png`, `apple-touch-icon.png` | Browser icons |
-| Icons | `/public/icons/bag.svg`, `arrow.svg`, `play.svg` | UI icons |
-| Images | `/public/images/hero/renaissance.jpg` and 6 additional hero stills, `/public/images/studio.jpg` | Hero and remote studio photo |
-| 3D assets | `/public/models/clock.glb` (if present) or CSS 3D wireframe | 3D mode lattice |
+| Category | Location | Provenance / Source | Usage |
+|----------|----------|---------------------|-------|
+| Hero grid videos (23) + posters | `public/videos/hero/` 41 files (e.g. `card-hash-1b35.mp4`, `sidekick.mp4`) + `public/images/hero/` 56 images (e.g. `renaissance.jpg`, `card-hash-7e77.jpg`); served also via Shopify CDN `https://cdn.shopify.com/shopify-design-cms-media/media/` | Local public mirrors + Shopify Design CMS CDN (original shopify.design media, licensed/attributed to Shopify) | 23 hero cards (COL1 8 + COL2 7 + COL3 8 in `src/components/HeroSection.tsx`) previews and modal videos; posters as fallback |
+| Carousel media (14 cards) | `public/videos/carousel/context.mp4`, `diveclub.mp4` + `public/images/carousel/` 27 images (e.g. `diamond.jpg`, `dinner-*.jpg`, `article-bg-*.png`, `context.jpg`) + CDN `https://cdn.shopify.com/shopify-design-cms-media/media/` (e.g. `katarina-dive-club-d.mp4`, `Comp%201…jpg`) | Local public + Shopify CDN (CMS media, same origin as hero) | 14 draggable carousel cards (8 media video, 4 stacked triple, 2 article) in `src/components/CarouselSection.tsx` |
+| GLB 3D models (15) | `public/models/model4.glb`, `model5.glb`, `model7.glb`, `model8.glb`, `model10.glb`, `model11.glb`, `model12.glb`, `model13.glb`, `model14.glb`, `model15.glb`, `model16.glb`, `model17.glb`, `model18.glb`, `model19.glb`, `model20.glb` | Local copy from original shopify.design WebGL assets (floating objects, wireframe lattice) | Floating 3D objects `src/components/FloatingObjects.tsx` and wireframe overlay `InfiniteGrid.ts`; CSS wireframe fallback if missing |
+| Fonts (4 woff2 + 1 json) | `public/fonts/AntiqueLegacy-Light.woff2`, `AntiqueLegacy-Regular.woff2`, `AntiqueLegacy-Medium.woff2`, `FragmentMono-Regular.woff2`, `AntiqueLegacy-Medium.typeface.json` | Shopify bespoke fonts Antique Legacy (display) + Fragment Mono (mono) — locally hosted WOFF2, sourced from shopify.design | Global typography: `AntiqueLegacy` for headlines/hero, `FragmentMono` for mono labels; 3D `typeface.json` for wireframe text |
+| Icons (10) | `public/icons/logo.svg`, `logo-white.svg`, `shop-bag.svg`, `arrow-outward.svg`, `arrow-forward-white.svg`, `close.svg`, `design-mark-white.svg`, `expand-icon.svg`, `studio-logo.svg`, `marquee-icon.gif` | Local copy from shopify.design icon set (SVG, one GIF) | Header/footer logos, bag CTA, arrow, close modal, marquee, studio stamp, expand |
+| Clock dial | `public/clock/clock-hand-dial.webp` | Local asset from original clock section | Tick hand texture for countdown clock |
+| Hero & studio photos | `public/images/studio.jpg`, `studio.webp`, `public/studio.jpg` alias | Local studio photography from shopify.design | Remote staircase New York line + meta images |
+| SFX / Audio (6) | `public/sfx/clock-tick.mp3`, `clock-tock.mp3`, `sfx-01.mp3`–`sfx-04.mp3` | Local SFX from original clock/tick experience | Clock tick/tock and intro tick sounds; no Shopify CDN audio |
+| Favicons (42) | `public/favicons/favicon-32x32.png`, `favicon-16x16.png`, `apple-touch-icon.png` + 13 variant folders `01`–`13` each with 3 files + root `public/favicons/` | Local favicon set mirrored from shopify.design | Browser icons/manifest; served statically |
+| CDN media (Shopify CMS) | `https://cdn.shopify.com/shopify-design-cms-media/media/` (e.g. `Screenshot%202026-05-14%20at%20…`, `2cfdb1d8…`, `katarina-dive-club…`, `1b358e50…`) | Shopify CDN — authoritative source for all hero thumbnail/poster images and hero/carousel videos (23 hero + 14 carousel) | Primary media for hero/carousel when available; local `public/videos` + `public/images` act as pre-cached mirrors/fallback posters |
 
 - All assets are under root `/public` and served statically.
 - Video assets are `MP4` `H.264`, images are `JPEG`/`WEBP`, fonts are `WOFF2`.
@@ -250,12 +252,12 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
   - Tagline `How we work is changing shape. So is what's possible.`
   - Live indicator `From Artifact` with pulsing green dot.
   - Demo Night pill `Demo Night` with marquee text.
-  - Grid of 19 video cards with mixed aspect ratios.
+  - Grid of 23 video cards (8+7+8) with mixed aspect ratios.
 - Structure, components, and assets:
   - Hero centered with headline and tagline, live indicator top-left, Demo Night top-right.
   - Grid 3 columns desktop, 2 columns mobile, gap `16px`, max width `1440px`.
   - Cards `24px` radius, rotated slightly, video cover centered.
-  - Assets: 6 hero videos + 13 project videos.
+  - Assets: 23 hero videos/posters (CDN + local public/videos/hero + public/images/hero; see Asset Inventory).
 - Behavior / states:
   - Cards animate in from offset positions on load.
   - Clicking a card opens modal (see Card Modal).
@@ -307,7 +309,7 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
   - 10 draggable cards (5 media, 3 stacked, 2 article) with videos, photos, or gradient headings.
 - Structure, components, and assets:
   - Header centered, cards horizontal row starting centered in viewport, size `415×558px`, `24px` radius, rotated `-2deg` to `+2.5deg`, gap `16px`.
-  - Assets: carousel videos `context.mp4`, `diveclub.mp4` plus 3 additional.
+  - Assets: 14 carousel cards — 8 media videos + 4 stacked triples + 2 article (CDN + public/images/carousel + public/videos/carousel; see Asset Inventory).
 - Behavior / states:
   - Drag with mouse/touch, momentum after release, snap to centered card; videos auto-play when centered.
   - Keyboard arrow navigates between cards.
@@ -369,11 +371,11 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 ### Intro and Hero
 
 - Intro sequence of 4 words with popping scale and converging tracking plays on first load and clears via radial tile explosion to reveal hero without blank frame.
-- Hero shows `Make the new normal` at 164px desktop (scales down mobile), tagline, live indicator with pulsing dot, and 19 video cards in 3 columns desktop / 2 columns mobile with mixed aspect ratios.
+- Hero shows `Make the new normal` at 164px desktop (scales down mobile), tagline, live indicator with pulsing dot, and 23 video cards in 3 columns desktop / 2 columns mobile with mixed aspect ratios.
 
 ### Card Interaction
 
-- Clicking any of the 19 cards opens a fullscreen modal with video auto-play, white blurred backdrop, hash URL, and locked scroll; backdrop/`ESC`/back closes it and focus returns.
+- Clicking any of the 23 cards opens a fullscreen modal with video auto-play, white blurred backdrop, hash URL, and locked scroll; backdrop/`ESC`/back closes it and focus returns.
 
 ### Clock
 
@@ -381,7 +383,7 @@ The product qualities are confident, editorial, cinematic, and crafted. Typograp
 
 ### Carousel
 
-- Horizontal draggable row of 10 cards (5 media, 3 stacked, 2 article) centered initially, drag with momentum, auto-play when centered, keyboard navigable.
+- Horizontal draggable row of 14 cards (8 media, 4 stacked, 2 article) centered initially, drag with momentum, auto-play when centered, keyboard navigable.
 
 ### Remote and Footer
 

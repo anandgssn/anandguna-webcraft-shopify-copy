@@ -58,7 +58,7 @@ backend = "Static Next.js site, no backend required"
 
 [[screenshots]]
 route = "/"
-file = "screenshots/replica-home-desktop.png"
+file = "screenshots/replica-home.png"
 device = "desktop"
 side = "replica"
 
